@@ -3,17 +3,17 @@
  import CssBaseline from '@mui/material/CssBaseline';
  import { Route,Routes } from 'react-router-dom';
 import {Actors,MovieInformation,Movies,Navbar,Profile} from './index'
- import { Box } from '@mui/material';
+ 
 const App = () => {
   return (
-
-    <Box sx={{display:"flex",height:"100%",}}>
+   
+    <div style={{display:"flex",height:"100%",}}>
        <CssBaseline/>
        <Navbar/>
-        <main style={{flexGrow:1,padding:"2em"}}>
-        <Box sx={{height:'70px'}}>
+        <main style={{display:"flex",flexGrow:1,padding:'4em',marginTop:"30px", justifyItems:"flex-start"}}>
+        <div style={{height:'70px'}}>
           <Routes>
-            <Route  exact path="/" element={<Movies/>} >
+            <Route  exact path="/" element={<Movies />} >
              
             </Route>
             <Route  exact path="/movies" element={<MovieInformation />}>
@@ -26,9 +26,10 @@ const App = () => {
               
               </Route>
           </Routes>
-          </Box>
+          </div>
         </main>
-    </Box>
+    </div>
+   
   )
 }
 
