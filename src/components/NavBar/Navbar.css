@@ -1,0 +1,19 @@
+.login_button{
+    font-weight: bold;
+    
+}
+.login_button:hover {
+ color: purple;
+ text-decoration: none;
+ transform:scale(1.05);
+ font-weight: bolder;
+}
+
+.auth_button{
+    color:black
+}
+.auth_button:hover{
+color: white !important;
+text-decoration: none;
+transform: scale(1.05);
+}
