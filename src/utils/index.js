@@ -36,3 +36,11 @@ export const fetchToken= async()=>{
         }
 
     }
+    export const birthdayFormat= (birthday)=>{
+         if (birthday){
+            const date = new Date(birthday);
+            const options={year:'numeric',month:'long',day:'numeric'};
+            const formattedBirthday=date.toLocaleDateString(undefined,options);
+            return formattedBirthday;
+         }
+    }

@@ -14,6 +14,8 @@ const Search = () => {
             dispatch(searchMovie(query))
          }
     };
+    const location=useLocation();
+    if(location.pathname!=='/') return null;
   return (
     <div style={{[theme.breakpoints.down("sm")]:{display:"flex",justifyContent:"center",width:"100%"}}}>
       <TextField onKeyDown={handleKeyPress} value={query} onChange={(e)=>setQuery(e.target.value)} variant='standard' 

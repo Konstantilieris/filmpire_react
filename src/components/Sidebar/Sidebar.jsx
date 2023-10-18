@@ -9,13 +9,17 @@ const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48
 import genreIcons from '../../assets/genres';
 import { useDispatch,useSelector } from 'react-redux';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+import './Sidebar.css'
 const Sidebar = ({setMobileOpen}) => {
    const {genreIdOrCategoryName}= useSelector((state)=>state.currentGenreOrCategory)
    
     const theme=useTheme();
     const {data, isFetching}=useGetGenresQuery();
     const dispatch=useDispatch();
-   
+    console.log(theme.palette.mode)
+    useEffect(()=>{
+      setMobileOpen(false);
+},[genreIdOrCategoryName])
   return (
     <>
         <Link to="/" style={{display:"flex",justifyContent:"center",padding:"10% 0"}}>
@@ -28,7 +32,10 @@ const Sidebar = ({setMobileOpen}) => {
           {categories.map(({label,value})=>(
                 <Link key={value} to="/" style={{color:theme.palette.text.primary,textDecoration:"none"}}>
                     <ListItem onClick={()=>dispatch(selectGenreOrCategory(value))} button>
-                       { <ListItemIcon> <img src={genreIcons[label.toLowerCase()]} height={30} style={{color:"black"}}/></ListItemIcon>}
+                       { <ListItemIcon> 
+                       <img src={genreIcons[label.toLowerCase()]}  className='gerneImage' height={30} 
+                        style={{filter:theme.palette.mode==='dark'?'invert(1)':''}}/>
+                       </ListItemIcon>}
                         <ListItemText primary={label}/>
                     </ListItem>
                 </Link>
@@ -44,7 +51,9 @@ const Sidebar = ({setMobileOpen}) => {
     data.genres.map(({id,name})=>(
                 <Link key={id} to="/" style={{color:theme.palette.text.primary,textDecoration:"none",}}>
                     <ListItem onClick={()=>dispatch(selectGenreOrCategory(id))} button>
-                       { <ListItemIcon> <img src={genreIcons[name.toLowerCase()]} height={30} style={{color:"black"}}/></ListItemIcon>}
+                       { <ListItemIcon> 
+                       <img src={genreIcons[name.toLowerCase()]} className='genreImage' height={30} style={{filter:theme.palette.mode==='dark'?'invert(1)':''}}/>
+                       </ListItemIcon>}
                         <ListItemText primary={name} sx={{fontSize:"50px"}}/>
                     </ListItem>
                 </Link>
